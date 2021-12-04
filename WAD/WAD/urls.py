@@ -15,7 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-
+from pages.views import homepage_view
+from rest_framework.urlpatterns import format_suffix_patterns
+from esp32 import views
 urlpatterns = [
     path('admin/', admin.site.urls),
+     path('',homepage_view, name='home'),
+     path('esp32/',views.EspList.as_view())
 ]
+
+urlpatterns = format_suffix_patterns(urlpatterns)
