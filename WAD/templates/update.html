@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{%block content%}
+<div class="container mt-4">
+
+    <h4>Update Record</h4>
+    <hr>
+    <form action="/update/{{esp.id}}" method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="">Name</label>
+           <input type="text" name="name" value="{{name}}" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="">Password</label>
+           <input type="text" name="password" value="{{password}}" class="form-control">
+        </div>
+        <div class="form-group form-check form-switch">
+            <label class="form-check-label" for="flexSwitchCheckDefault">Mode</label>
+        {% if mode %}
+            <input class="form-check-input" name="mode" type="checkbox" checked id="flexSwitchCheckDefault">
+         {% else %}
+         <input class="form-check-input" name="mode" type="checkbox" id="flexSwitchCheckDefault">
+        {% endif %}  
+        </div>
+        <div class="form-group">
+         <button class="btn btn-primary" type="submit">Update Record</button>
+    <a href="{% url 'show' %}" class="btn btn-info">Show Details</a>
+        </div>
+    
+    </form>
+</div>
+{% endblock content %}

@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{%block content%}
+<div class="container mt-4">
+
+    <h4>Add New</h4>
+    <hr>
+    <form action="" method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="">Name</label>
+           <input type="text" name="name" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="">Password</label>
+           <input type="text" name="password" class="form-control">
+        </div>
+        <div class="form-group form-check form-switch">
+            <input class="form-check-input" name="mode" type="checkbox" id="flexSwitchCheckDefault">
+            <label class="form-check-label" for="flexSwitchCheckDefault">Mode</label>
+          </div>
+        <div class="form-group">
+         <button class="btn btn-primary" type="submit">Add Record</button>
+    <a href="{% url 'show' %}" class="btn btn-info">Show Details</a>
+        </div>
+    
+    </form>
+</div>
+{% endblock content %}

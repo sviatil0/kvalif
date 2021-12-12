@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{%block content%}
+<div class="container mt-4">
+   
+    <h4>Esp Details</h4>
+    <a href="{% url 'add' %}" class ="btn btn-sm btn-success">Add New</a>
+    <hr>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Password</th>
+                <th>Mode</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for s in esp %}
+            <tr>
+                <td>{{ s.name }}</td>
+                <td>{{ s.password }}</td>
+                <td>
+                    {% if s.mode %}
+                    Turned ON
+                    {% else %}
+                    Turned OFF
+                    {% endif %}
+                </td>
+                <td>
+                    <a href="update/{{ s.id }}" class ="btn btn-sm btn-success">Edit</a>
+                    <a href="delete/{{ s.id }}" class ="btn btn-sm btn-danger">Delete</a>
+                    {% if s.mode %}
+                    <a href="turn_off/{{ s.id }}" class ="btn btn-sm btn-dark">Turn off</a>
+                    {% else %}
+                    <a href="turn_on/{{ s.id }}" class ="btn btn-sm btn-secondary">Turn on</a>
+                    {% endif %}
+
+                </td>
+            </tr>
+            
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock content %}
